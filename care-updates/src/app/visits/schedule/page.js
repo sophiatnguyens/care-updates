@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ const typeLabels = {
   outing: "Day trip / outing",
 };
 
-export default function ScheduleVisit() {
+function ScheduleVisitContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get("type") || "resident";
   const label = typeLabels[type] || typeLabels.resident;
@@ -77,5 +78,13 @@ export default function ScheduleVisit() {
         </button>
       </div>
     </main>
+  );
+}
+
+export default function ScheduleVisit() {
+  return (
+    <Suspense fallback={null}>
+      <ScheduleVisitContent />
+    </Suspense>
   );
 }
