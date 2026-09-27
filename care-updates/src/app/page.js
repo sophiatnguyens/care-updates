@@ -45,6 +45,14 @@ const updates = [
   },
 ];
 
+const weekActivities = [
+  { day: "Mon", label: "Music circle", today: false },
+  { day: "Today · Wed", label: "Chair yoga", today: true },
+  { day: "Thu", label: "Garden walk", today: false },
+  { day: "Fri", label: "Movie night", today: false },
+  { day: "Sat", label: "Your visit · 2:30 PM", today: false },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F7F3EC] flex flex-col max-w-md mx-auto">
@@ -76,6 +84,28 @@ export default function Home() {
           <div className="flex-1 bg-white border border-[#E7E0D4] rounded-xl p-3 text-center">
             <div className="text-xs text-gray-400">Last visit</div>
             <div className="text-sm font-semibold mt-1">{resident.lastVisit}</div>
+          </div>
+        </div>
+
+        {/* This week's activities */}
+        <div className="space-y-2">
+          <h2 className="text-base font-semibold">This Week's Activities</h2>
+          <div className="flex gap-2.5 overflow-x-auto pb-1">
+            {weekActivities.map((a, i) => (
+              <div
+                key={i}
+                className={`flex-shrink-0 w-[108px] rounded-xl p-2.5 ${
+                  a.today ? "bg-[#3A6B7A]" : "bg-white border border-[#E7E0D4]"
+                }`}
+              >
+                <div className={`text-[11px] font-semibold ${a.today ? "text-[#EAF0F1]" : "text-gray-400"}`}>
+                  {a.day}
+                </div>
+                <div className={`text-sm font-semibold mt-1 leading-snug ${a.today ? "text-white" : ""}`}>
+                  {a.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -113,9 +143,9 @@ export default function Home() {
         <Link href="/messages" className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
           Messages
         </Link>
-        <button className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
+        <Link href="/visits" className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
           Visits
-        </button>
+        </Link>
         <button className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
           Profile
         </button>
