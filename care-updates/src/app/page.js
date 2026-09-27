@@ -148,6 +148,9 @@ export default function Home() {
         </Link>
         <button className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
           Profile
+          <Link href="/profile" className="flex-1 flex flex-col items-center gap-1 text-xs font-semibold text-gray-400">
+  Profile
+</Link>
         </button>
       </div>
     </main>
